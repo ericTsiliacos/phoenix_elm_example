@@ -1,6 +1,5 @@
 defmodule Todos.ItemControllerTest do
   use Todos.ConnCase
-  import Ecto.DateTime
 
   test "#index", %{conn: conn} do
     item = insert(:item)
