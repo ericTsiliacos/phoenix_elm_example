@@ -26,6 +26,7 @@ defmodule Todos.ConnCase do
       import Ecto.Query
 
       import Todos.Router.Helpers
+      import Todos.Factory
 
       # The default endpoint for testing
       @endpoint Todos.Endpoint
