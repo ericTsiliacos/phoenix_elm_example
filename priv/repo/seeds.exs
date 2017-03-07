@@ -9,3 +9,24 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+Todos.Repo.insert!(
+    %Todos.Item{
+      title: "First Item",
+      description: "First description"
+    }
+)
+
+Todos.Repo.insert!(
+    %Todos.Item{
+      title: "Second Item",
+      description: "Second description."
+    }
+)
+
+Todos.Repo.insert!(
+    %Todos.Item{
+      title: "Third Item",
+      description: "Third description."
+    }
+)
