@@ -1,12 +1,13 @@
 module Main exposing (..)
 
-import Components.Items exposing (update, view)
-import Html exposing (beginnerProgram)
+import Components.Items exposing (init, update, view)
+import Html exposing (program)
 
 
 main =
-    beginnerProgram
-        { model = {}
-        , view = view
+    program
+        { init = init
         , update = update
+        , subscriptions = always Sub.none
+        , view = view
         }

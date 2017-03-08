@@ -4,6 +4,10 @@ import Html exposing (div, h1, li, p, text, ul)
 import Html.Attributes exposing (class, id)
 
 
+init =
+    ( {}, Cmd.none )
+
+
 update _ model =
     model
 
