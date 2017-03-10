@@ -1,38 +1,41 @@
-var _user$project$App$listItems = A2(
-	_elm_lang$html$Html$ul,
-	{
-		ctor: '::',
-		_0: _elm_lang$html$Html_Attributes$id('items'),
-		_1: {ctor: '[]'}
-	},
-	{
-		ctor: '::',
-		_0: A2(
-			_elm_lang$html$Html$li,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('item'),
-				_1: {ctor: '[]'}
-			},
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$p,
+var _user$project$App$listItems = function (items) {
+	return A2(
+		_elm_lang$html$Html$ul,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$id('items'),
+			_1: {ctor: '[]'}
+		},
+		A2(
+			_elm_lang$core$List$map,
+			function (item) {
+				return A2(
+					_elm_lang$html$Html$li,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('title'),
+						_0: _elm_lang$html$Html_Attributes$class('item'),
 						_1: {ctor: '[]'}
 					},
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html$text('My Special Item'),
+						_0: A2(
+							_elm_lang$html$Html$p,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('title'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(item.title),
+								_1: {ctor: '[]'}
+							}),
 						_1: {ctor: '[]'}
-					}),
-				_1: {ctor: '[]'}
-			}),
-		_1: {ctor: '[]'}
-	});
-var _user$project$App$view = function (_p0) {
+					});
+			},
+			items));
+};
+var _user$project$App$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{ctor: '[]'},
@@ -48,17 +51,81 @@ var _user$project$App$view = function (_p0) {
 				}),
 			_1: {
 				ctor: '::',
-				_0: _user$project$App$listItems,
+				_0: _user$project$App$listItems(model.items),
 				_1: {ctor: '[]'}
 			}
 		});
 };
 var _user$project$App$update = F2(
-	function (_p1, model) {
-		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+	function (msg, model) {
+		var _p0 = msg;
+		if (_p0._0.ctor === 'Ok') {
+			return A2(
+				_elm_lang$core$Platform_Cmd_ops['!'],
+				_elm_lang$core$Native_Utils.update(
+					model,
+					{items: _p0._0._0}),
+				{
+					ctor: '::',
+					_0: _elm_lang$core$Platform_Cmd$none,
+					_1: {ctor: '[]'}
+				});
+		} else {
+			var _p1 = _p0._0._0;
+			var showErr = A2(
+				_elm_lang$core$Debug$log,
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					'Err: ',
+					_elm_lang$core$Basics$toString(_p1)),
+				_p1);
+			return A2(
+				_elm_lang$core$Platform_Cmd_ops['!'],
+				model,
+				{
+					ctor: '::',
+					_0: _elm_lang$core$Platform_Cmd$none,
+					_1: {ctor: '[]'}
+				});
+		}
 	});
-var _user$project$App$init = {
-	ctor: '_Tuple2',
-	_0: {},
-	_1: _elm_lang$core$Platform_Cmd$none
+var _user$project$App$Model = function (a) {
+	return {items: a};
 };
+var _user$project$App$Item = F2(
+	function (a, b) {
+		return {title: a, description: b};
+	});
+var _user$project$App$itemDecoder = A3(
+	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+	'description',
+	_elm_lang$core$Json_Decode$string,
+	A3(
+		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+		'title',
+		_elm_lang$core$Json_Decode$string,
+		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$App$Item)));
+var _user$project$App$getItems = A2(
+	_elm_lang$http$Http$get,
+	'/api/items',
+	A2(
+		_elm_lang$core$Json_Decode$at,
+		{
+			ctor: '::',
+			_0: 'items',
+			_1: {ctor: '[]'}
+		},
+		_elm_lang$core$Json_Decode$list(_user$project$App$itemDecoder)));
+var _user$project$App$FetchItems = function (a) {
+	return {ctor: 'FetchItems', _0: a};
+};
+var _user$project$App$init = A2(
+	_elm_lang$core$Platform_Cmd_ops['!'],
+	{
+		items: {ctor: '[]'}
+	},
+	{
+		ctor: '::',
+		_0: A2(_elm_lang$http$Http$send, _user$project$App$FetchItems, _user$project$App$getItems),
+		_1: {ctor: '[]'}
+	});

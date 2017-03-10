@@ -10,9 +10,7 @@ defmodule Todos.ItemView do
   def item_json(item) do
     %{
       title: item.title,
-      description: item.description,
-      inserted_at: item.inserted_at,
-      updated_at: item.updated_at
+      description: item.description
     }
   end
 end
