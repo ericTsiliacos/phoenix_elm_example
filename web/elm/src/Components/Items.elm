@@ -9,7 +9,7 @@ init =
 
 
 update _ model =
-    model
+    ( model, Cmd.none )
 
 
 view _ =
