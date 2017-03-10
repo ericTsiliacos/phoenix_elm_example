@@ -22,5 +22,13 @@ defmodule Todos.UserListTest do
       |> Element.text
 
     assert item_title == item.title
+
+    item_description =
+      session
+      |> visit("/")
+      |> find(Query.css(".description"))
+      |> Element.text
+
+    assert item_description == item.description
   end
 end

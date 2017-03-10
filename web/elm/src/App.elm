@@ -51,6 +51,8 @@ listItems items =
                 li [ class "item" ]
                     [ p [ class "title" ]
                         [ text <| item.title ]
+                    , p [ class "description" ]
+                        [ text <| item.description ]
                     ]
             )
             items

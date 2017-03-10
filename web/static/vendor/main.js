@@ -9030,7 +9030,22 @@ var _user$project$App$listItems = function (items) {
 								_0: _elm_lang$html$Html$text(item.title),
 								_1: {ctor: '[]'}
 							}),
-						_1: {ctor: '[]'}
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$p,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('description'),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text(item.description),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}
 					});
 			},
 			items));
