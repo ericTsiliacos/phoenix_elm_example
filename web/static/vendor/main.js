@@ -8145,7 +8145,7 @@ var _elm_lang$html$Html_Attributes$classList = function (list) {
 };
 var _elm_lang$html$Html_Attributes$style = _elm_lang$virtual_dom$VirtualDom$style;
 
-var _user$project$Components_Items$listItems = A2(
+var _user$project$App$listItems = A2(
 	_elm_lang$html$Html$ul,
 	{
 		ctor: '::',
@@ -8179,7 +8179,7 @@ var _user$project$Components_Items$listItems = A2(
 			}),
 		_1: {ctor: '[]'}
 	});
-var _user$project$Components_Items$view = function (_p0) {
+var _user$project$App$view = function (_p0) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{ctor: '[]'},
@@ -8195,16 +8195,16 @@ var _user$project$Components_Items$view = function (_p0) {
 				}),
 			_1: {
 				ctor: '::',
-				_0: _user$project$Components_Items$listItems,
+				_0: _user$project$App$listItems,
 				_1: {ctor: '[]'}
 			}
 		});
 };
-var _user$project$Components_Items$update = F2(
+var _user$project$App$update = F2(
 	function (_p1, model) {
 		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
 	});
-var _user$project$Components_Items$init = {
+var _user$project$App$init = {
 	ctor: '_Tuple2',
 	_0: {},
 	_1: _elm_lang$core$Platform_Cmd$none
@@ -8212,10 +8212,10 @@ var _user$project$Components_Items$init = {
 
 var _user$project$Main$main = _elm_lang$html$Html$program(
 	{
-		init: _user$project$Components_Items$init,
-		update: _user$project$Components_Items$update,
+		init: _user$project$App$init,
+		update: _user$project$App$update,
 		subscriptions: _elm_lang$core$Basics$always(_elm_lang$core$Platform_Sub$none),
-		view: _user$project$Components_Items$view
+		view: _user$project$App$view
 	})();
 
 var Elm = {};

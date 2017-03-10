@@ -1,4 +1,4 @@
-module Components.Items exposing (..)
+module App exposing (..)
 
 import Html exposing (div, h1, li, p, text, ul)
 import Html.Attributes exposing (class, id)

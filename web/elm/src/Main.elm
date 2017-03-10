@@ -1,6 +1,6 @@
 module Main exposing (..)
 
-import Components.Items exposing (init, update, view)
+import App exposing (init, update, view)
 import Html exposing (program)
 
 
