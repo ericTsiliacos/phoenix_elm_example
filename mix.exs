@@ -52,6 +52,8 @@ defmodule Todos.Mixfile do
   defp aliases do
     ["ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
      "ecto.reset": ["ecto.drop", "ecto.setup"],
-     "test": ["ecto.create --quiet", "ecto.migrate", "test"]]
+     "test": ["ecto.create --quiet", "ecto.migrate", "test",
+              "cmd ./node_modules/elm-test/bin/elm-test web/elm/tests/Main.elm"]
+    ]
   end
 end
